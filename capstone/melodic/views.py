@@ -6,16 +6,17 @@ from django.views.generic.edit import UpdateView, CreateView, UpdateView, Delete
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import DetailView
+from django.urls import reverse
 
 # Create your views here.
 
 #splashpage 
 class Splash(TemplateView):
-    template_name = 'splash.html'
+    template_name = "splash.html"
 
 #login
 class Login(TemplateView):
-    template_name = 'login.html'
+    template_name = "login.html"
 
 #signup
 class Signup(View):
@@ -36,4 +37,4 @@ class Signup(View):
 
 #home
 class Home(TemplateView):
-    template_name = 'home.html'
+    template_name = "home.html"
