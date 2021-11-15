@@ -11,14 +11,16 @@
 <div class="track_list">
     {% for track in tracks %} 
     <div class="card m-3">
-        <div class="card-img-top">
-            <div class='thumbnail'>
-                <img src="{{track.cover}}" alt="{{track.name}}" />
+        <a href = "{% url 'track_detail' track.pk %}">
+            <div class="card-img-top">
+                <div class='thumbnail'>
+                    <img src="{{track.cover}}" alt="{{track.name}}" />
+                </div>
             </div>
-        </div>
         <div class='card-header'>{{track.title}}</div>
+        </a>
         <h6 class='card-subtitle'>{{track.author}}</h6>
-    </div>
+        </div>
     {% empty %} 
     <div class="card">
         <div class='card-header'>
