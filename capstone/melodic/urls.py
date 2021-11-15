@@ -10,5 +10,8 @@ urlpatterns = [
     path('signup/', views.Signup.as_view(), name="signup"),
     #home page, shows posts, allows creation of posts
     path('home/', views.Home.as_view(), name="home"),
-
+    #create path for tracks
+    path('home/new-track', views.TrackCreate.as_view(), name='track_create'),
+    #detail view for tracks
+    path('track/<int:pk>/', views.TrackDetail.as_view(), name='track_detail')
 ]

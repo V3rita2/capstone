@@ -53,3 +53,22 @@ class Home(TemplateView):
             context["header"] = "Popular Tracks"
         return context
 
+#Track creation view
+class TrackCreate(CreateView):
+    model = Track
+    fields = ['title', 'cover']
+    template_name = 'track_create.html'
+
+    #user validation
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(TrackCreate, self).form_valid(form)
+    
+    def get_success_url(self):
+        print(self.kwargs)
+        return reverse('home')
+
+#track detail view
+class TrackDetail(DetailView):
+    model = Track
+    template_name = 'track_detail.html'

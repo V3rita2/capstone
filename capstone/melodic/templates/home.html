@@ -3,21 +3,21 @@
 
 <form class='form-control-sm' method='get'>
     <div class='form-floating'>
-        <input class='input' type='text' name='title' value='title' />
+        <input class='input' type='text' name='title' placeholder='title' />
         <input class='btn-success' type='submit' value='search' />
     </div>
     <a class='btn-dark' href="{% url 'home' %}">Clear Search</a>
 </form>
 <div class="track_list">
     {% for track in tracks %} 
-    <div class="card">
+    <div class="card m-3">
         <div class="card-img-top">
             <div class='thumbnail'>
                 <img src="{{track.cover}}" alt="{{track.name}}" />
             </div>
         </div>
         <div class='card-header'>{{track.title}}</div>
-        <h6 class='card-subtitle'>subtitle</h6>
+        <h6 class='card-subtitle'>{{track.author}}</h6>
     </div>
     {% empty %} 
     <div class="card">
