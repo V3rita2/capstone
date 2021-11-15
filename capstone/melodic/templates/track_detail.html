@@ -1,5 +1,15 @@
 {% extends 'base.html' %} {% block content %} 
 <h1>{{track.title}}</h1>
 <h3>details</h3>
-
+    <div class="comment_list">
+        {% for comment in track.comments.all %}
+        <div class="card">
+            <div class="card-body">{{comment.body}}</div>
+        </div>
+        {% empty %} 
+        <div class="card">
+            <div class="card-header">No Comments Yet!</div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}

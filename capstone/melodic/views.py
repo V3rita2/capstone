@@ -66,7 +66,7 @@ class TrackCreate(CreateView):
     
     def get_success_url(self):
         print(self.kwargs)
-        return reverse('home')
+        return reverse('track_detail', kwargs={'pk': self.object.pk})
 
 #track detail view
 class TrackDetail(DetailView):
