@@ -1,5 +1,13 @@
 {% extends 'base.html' %} {% block content %} 
 <h1>{{track.title}}</h1>
+<div class="container">
+<div class="card">
+        <img class="card-img-top img-fluid w-50" src="{{track.cover}}" alt="{{track.title}}">
+        <div class="card-body">
+            {{track.body}}
+        </div>
+</div>
+</div>
 <h3>details</h3>
 <div class="comment-form">
     <form action="{% url 'comment_create' track.pk %}" method="post">
