@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
@@ -7,8 +8,10 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import DetailView
 from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
-from .models import Track
+from .models import Track, Comment
 
 # Create your views here.
 
@@ -38,6 +41,7 @@ class Signup(View):
             return render(request, "registration/signup.html", context)
 
 #home (track list)
+@method_decorator(login_required, name='dispatch')
 class Home(TemplateView):
     template_name = "home.html"
 
@@ -54,9 +58,10 @@ class Home(TemplateView):
         return context
 
 #Track creation view
+@method_decorator(login_required, name='dispatch')
 class TrackCreate(CreateView):
     model = Track
-    fields = ['title', 'cover']
+    fields = ['title', 'cover', 'body', 'author']
     template_name = 'track_create.html'
 
     #user validation
@@ -66,9 +71,44 @@ class TrackCreate(CreateView):
     
     def get_success_url(self):
         print(self.kwargs)
-        return reverse('home')
+        return reverse('track_detail', kwargs={'pk': self.object.pk})
+
+#track update and delete views
+class TrackUpdate(UpdateView):
+    model = Track
+    fields = ['cover', 'body']
+    template_name = 'track_update.html'
+    sucess_url = '/home/'
+
+class TrackDelete(DeleteView):
+    model = Track
+    template_name = 'track_delete_confirm.html'
+    sucess_url = '/home/'
 
 #track detail view
+@method_decorator(login_required, name='dispatch')
 class TrackDetail(DetailView):
     model = Track
     template_name = 'track_detail.html'
+
+#comment creation view
+@method_decorator(login_required, name='dispatch')
+class CommentCreate(View):
+
+    def post(self, request, pk):
+        body = request.POST.get("body")
+        track = Track.objects.get(pk=pk)
+        Comment.objects.create(body=body, track=track)
+        return redirect('track_detail', pk=pk)
+
+#profile page
+@method_decorator(login_required, name='dispatch')
+class Profile(TemplateView):
+    template_name = "profile.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tracks"] = Track.objects.filter(user=self.request.user)
+        context["currentUser"] = self.request.user
+
+        return context

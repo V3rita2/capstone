@@ -1,5 +1,32 @@
 {% extends 'base.html' %} {% block content %} 
-<h1>{{track.title}}</h1>
-<h3>details</h3>
-
+<h1 class="text-light">{{track.title}}</h1>
+<div class="container">
+<div class="card">
+        <img class="card-img-top img-fluid w-50" src="{{track.cover}}" alt="{{track.title}}">
+        <div class="card-body">
+            {{track.body}}
+        </div>
+</div>
+</div>
+<h3 class="text-bg">Comments</h3>
+<div class="comment-form">
+    <form action="{% url 'comment_create' track.pk %}" method="post">
+        {% csrf_token %} 
+        <div class="form-floating m-1">
+            <input class="input" type="text" name="body" placeholder="Write your comment here." required />
+        </div>
+        <input class="btn-primary" type="submit" value="Comment" />
+    </form>
+</div>
+    <div class="comment_list m-3">
+        {% for comment in track.comments.all %}
+        <div class="card m-2">
+            <div class="card-body">{{comment.body}}</div>
+        </div>
+        {% empty %} 
+        <div class="card">
+            <div class="card-header">No Comments Yet!</div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}
