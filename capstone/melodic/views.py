@@ -61,7 +61,7 @@ class Home(TemplateView):
 @method_decorator(login_required, name='dispatch')
 class TrackCreate(CreateView):
     model = Track
-    fields = ['title', 'cover', 'body']
+    fields = ['title', 'cover', 'body', 'author']
     template_name = 'track_create.html'
 
     #user validation
