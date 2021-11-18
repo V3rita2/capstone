@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
@@ -60,7 +61,7 @@ class Home(TemplateView):
 @method_decorator(login_required, name='dispatch')
 class TrackCreate(CreateView):
     model = Track
-    fields = ['title', 'cover']
+    fields = ['title', 'cover', 'body']
     template_name = 'track_create.html'
 
     #user validation
@@ -79,6 +80,7 @@ class TrackDetail(DetailView):
     template_name = 'track_detail.html'
 
 #comment creation view
+@method_decorator(login_required, name='dispatch')
 class CommentCreate(View):
 
     def post(self, request, pk):
@@ -86,3 +88,15 @@ class CommentCreate(View):
         track = Track.objects.get(pk=pk)
         Comment.objects.create(body=body, track=track)
         return redirect('track_detail', pk=pk)
+
+#profile page
+@method_decorator(login_required, name='dispatch')
+class Profile(TemplateView):
+    template_name = "profile.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tracks"] = Track.objects.filter(user=self.request.user)
+        context["currentUser"] = self.request.user
+
+        return context

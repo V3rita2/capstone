@@ -7,7 +7,9 @@ class Track(models.Model):
 
     title = models.CharField(max_length=150)
     cover = models.CharField(max_length=9999, default='No Image')
+    body = models.CharField(max_length=9999, default='No body')
     # author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tracks")
+
 
     def __str__(self):
         return self.title

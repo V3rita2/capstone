@@ -15,5 +15,7 @@ urlpatterns = [
     #detail view for tracks
     path('track/<int:pk>/', views.TrackDetail.as_view(), name='track_detail'),
     #create comments
-    path('track/<int:pk>/comments/new', views.CommentCreate.as_view(), name='comment_create')
+    path('track/<int:pk>/comments/new', views.CommentCreate.as_view(), name='comment_create'),
+    #profile page 
+    path('profile/', views.Profile.as_view(), name="profile")
 ]
