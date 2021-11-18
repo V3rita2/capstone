@@ -13,13 +13,13 @@
     <div class="card m-3">
         <a href = "{% url 'track_detail' track.pk %}">
             <div class="card-img-top">
-                <div class='thumbnail'>
+                <div class='thumbnail w-25'>
                     <img src="{{track.cover}}" alt="{{track.name}}" />
                 </div>
             </div>
         <div class='card-header'>{{track.title}}</div>
         </a>
-        <h6 class='card-subtitle'>{{track.user}}</h6>
+        <h6 class='card-subtitle'>{{track.author}}</h6>
         </div>
     {% empty %} 
     <div class="card">
