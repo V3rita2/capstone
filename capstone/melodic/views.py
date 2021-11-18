@@ -73,6 +73,18 @@ class TrackCreate(CreateView):
         print(self.kwargs)
         return reverse('track_detail', kwargs={'pk': self.object.pk})
 
+#track update and delete views
+class TrackUpdate(UpdateView):
+    model = Track
+    fields = ['cover', 'body']
+    template_name = 'track_update.html'
+    sucess_url = '/home/'
+
+class TrackDelete(DeleteView):
+    model = Track
+    template_name = 'track_delete_confirm.html'
+    sucess_url = '/home/'
+
 #track detail view
 @method_decorator(login_required, name='dispatch')
 class TrackDetail(DetailView):
