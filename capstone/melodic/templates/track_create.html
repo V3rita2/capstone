@@ -1,11 +1,12 @@
 {% extends "base.html" %}  
 {% block content %} 
 <h1>Track Upload</h1>
-
-<form method="post">
-    {% csrf_token %} 
-    {{form.as_p}}
-    <input class="btn-success" type="submit" value='submit'>
-</form>
+<div class='form-floating'>
+    <form method="post">
+        {% csrf_token %} 
+        {{form.as_p}}
+        <input class="btn-success" type="submit" value='submit'>
+    </form>
+</div>
 
 {% endblock %}
