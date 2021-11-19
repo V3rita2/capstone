@@ -20,5 +20,5 @@ urlpatterns = [
     path('profile/', views.Profile.as_view(), name="profile"),
     # update and delete paths for tracks
     path('track/<int:pk>/edit', views.TrackUpdate.as_view(), name='track_update'),
-    path('track/<int:pk>/delete', views.TrackDelete.as_view(), name='track_delete')
+    path('track/<int:pk>/delete', views.TrackDelete.as_view(), name='track_delete_confirm')
 ]
