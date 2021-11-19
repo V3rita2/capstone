@@ -16,7 +16,7 @@ urlpatterns = [
     path('track/<int:pk>/', views.TrackDetail.as_view(), name='track_detail'),
     #create comments
     path('track/<int:pk>/comments/new', views.CommentCreate.as_view(), name='comment_create'),
-    #profile page FIX IT ITS SO BUSTED PLEASE DONT FORGET TO FIX THIS
+    #profile page
     path('profile/', views.Profile.as_view(), name="profile"),
     # update and delete paths for tracks
     path('track/<int:pk>/edit', views.TrackUpdate.as_view(), name='track_update'),
