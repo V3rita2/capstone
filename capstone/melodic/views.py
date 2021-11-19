@@ -47,10 +47,10 @@ class Home(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        name = self.request.GET.get("name")
+        name = self.request.GET.get("title")
 
         if name != None:
-            context["tracks"] = Track.objects.filter(name_icontains=name)
+            context["tracks"] = Track.objects.filter(title__icontains=name)
             context["header"] = f"Searching for {name}"
         else:
             context["tracks"] = Track.objects.all()
@@ -108,7 +108,7 @@ class Profile(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["tracks"] = Track.objects.filter(user=self.request.user)
-        context["currentUser"] = self.request.user
+        context["user"] = self.request.user
+        context["tracks"] = Track.objects.filter(author=self.request.user)
 
         return context
