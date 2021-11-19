@@ -13,8 +13,8 @@
     <div class="card m-3">
         <a href = "{% url 'track_detail' track.pk %}">
             <div class="card-img-top">
-                <div class='thumbnail w-25'>
-                    <img src="{{track.cover}}" alt="{{track.name}}" />
+                <div class='thumbnail'>
+                    <img class='img-fluid' src="{{track.cover}}" alt="{{track.name}}" />
                 </div>
             </div>
         <div class='card-header'>{{track.title}}</div>

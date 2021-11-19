@@ -6,6 +6,14 @@
         <div class="card-body">
             {{track.body}}
         </div>
+        <div class="buttons">
+            <a href="{% url 'track_update' track.pk %}" class="btn-info">
+                Edit
+            </a>
+            <a href="{% url 'track_delete_confirm' track.pk %}" class="btn-danger">
+                Delete
+            </a>
+        </div>
 </div>
 </div>
 <h3 class="text-bg">Comments</h3>

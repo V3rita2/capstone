@@ -1,13 +1,32 @@
 {% extends 'base.html' %} {% block content %} 
-<div class="card bg-light">
+<div class="card bg-light m-3">
     <div class="card-header text-dark">
-        {{currentUser.username}}
+        <h1>{{user.username}}</h1>
     </div>
     <div class="card-subtitle text-dark">
-        {{currentUser.email}}
+        <h3>{{user.email}}</h3>
     </div>
 </div>
 
 <div class="post_gallery">
-    
+<!-- list of user's posts -->
+{% for track in tracks %} 
+    <div class="card m-3">
+        <a href = "{% url 'track_detail' track.pk %}">
+            <div class="card-img-top">
+                <div class='thumbnail w-25'>
+                    <img src="{{track.cover}}" alt="{{track.name}}" />
+                </div>
+            </div>
+        <div class='card-header'><h2>{{track.title}}</h2></div>
+        </a>
+        </div>
+    {% empty %} 
+    <div class="card">
+        <div class='card-header'>
+            <p>No Tracks Available</p>
+        </div>
+    </div>
+    {% endfor %}
 </div>
+{% endblock %}
