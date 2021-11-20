@@ -36,3 +36,9 @@ Creative Commons License
   - Rythm and Groovy bot for inspiration
   - Matt DeZarn for helping with deployment
 
+## Other Stuff
+
+  - [UserFlow](https://drive.google.com/file/d/1WMafMH2rSblrl2Yrh8QNR2FdPGK_vdBA/view?usp=sharing)
+  - [wireframe](https://www.figma.com/file/dlEamfudNXTJWwiCCB2hDC/Django-fett?node-id=2%3A114)
+  - [ERD](https://drive.google.com/file/d/1pcLV3MykCJPvItYYDIDb90iLQQx25tH8/view?usp=sharing)
+
