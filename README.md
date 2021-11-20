@@ -34,6 +34,7 @@ Creative Commons License
 ## Acknowledgments
 
   - Rythm and Groovy bot for inspiration
+  - Teri, Tosin, and Nicole for looking over my code, and pointing me in the right direction
   - Matt DeZarn for helping with deployment
 
 ## Other Stuff
