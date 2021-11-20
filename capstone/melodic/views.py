@@ -77,14 +77,14 @@ class TrackCreate(CreateView):
 @method_decorator(login_required, name='dispatch')
 class TrackUpdate(UpdateView):
     model = Track
-    fields = ['cover', 'body']
+    fields = ['title', 'body']
     template_name = 'track_update.html'
-    sucess_url = '/home/'
+    success_url = '/home/'
 @method_decorator(login_required, name='dispatch')
 class TrackDelete(DeleteView):
     model = Track
     template_name = 'track_delete_confirm.html'
-    sucess_url = '/home/'
+    success_url = "/home/"
 
 #track detail view
 @method_decorator(login_required, name='dispatch')

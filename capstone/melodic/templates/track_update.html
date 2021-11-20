@@ -1,8 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 <h1 class="text-light">Editing "{{track.title}}"</h1>
-    <form method="post">
-        {% csrf_token %}  {{form.as_P}}
-        <input class="btn-success" type='submit' value="Confirm" />
+
+
+    <form action="" method="post">
+        {% csrf_token %} {{form.as_P}} <input class="btn-success" type='submit' value="Confirm" />
     </form>
 
 {% endblock %}
