@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'capstone.urls'
+ROOT_URLCONF = 'django-fett.urls'
 
 TEMPLATES = [
     {
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'capstone.wsgi.application'
+WSGI_APPLICATION = 'django-fett.wsgi.application'
 
 
 # Database
